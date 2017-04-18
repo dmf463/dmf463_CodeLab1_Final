@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
     bool isHolding;
     public float distanceBetween;
     public GameObject player;
-    const float DISTANCE_THRESHOLD = 2f;
+    const float DISTANCE_THRESHOLD = 3f;
 
 	// Use this for initialization
 	void Start () {
@@ -30,12 +30,16 @@ public class GameManager : MonoBehaviour {
             if (isHolding == false && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayhit))
             {
                 distanceBetween = Vector3.Distance(player.transform.position, rayhit.transform.position);
-                if( distanceBetween < DISTANCE_THRESHOLD)
+                if (distanceBetween < DISTANCE_THRESHOLD && rayhit.transform.GetComponent<Interactable>().IsUsable() == false)
                 {
                     Debug.Log("hitting " + rayhit.collider.gameObject.name);
                     rayhit.rigidbody.isKinematic = true;
                     rayhit.transform.parent = Camera.main.transform;
                     isHolding = true;
+                }
+                else if(distanceBetween < DISTANCE_THRESHOLD && rayhit.transform.GetComponent<Interactable>().IsUsable() == true)
+                {
+                    rayhit.transform.GetComponent<Interactable>().AttachToHand(rayhit.transform);
                 }
             }
             else if (isHolding == true)
