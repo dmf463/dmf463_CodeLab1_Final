@@ -10,8 +10,6 @@ public class Interactable : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        hand = GameObject.Find("RightHand");
-
     }
 	
 	// Update is called once per frame
@@ -29,8 +27,22 @@ public class Interactable : MonoBehaviour {
         return true;
     }
 
-    public virtual void AttachToHand(Transform other)
+    public virtual void AttachToHand(GameObject other)
     {
-        other.parent = hand.transform;
+        hand = GameObject.FindGameObjectWithTag("hand");
+        //Debug.Log("the hand is called " + hand.name);
+        //Debug.Log("Clicking on: " + other.gameObject.name);
+        other.GetComponent<Rigidbody>().isKinematic = true;
+        other.transform.parent = hand.transform;
+        other.tag = "heldItem";
+        //other.transform.localPosition = new Vector3(0, 0, 0);
+        //other.transform.localPosition = UtilScript.CloneModVector3(other.transform.localPosition, xMod, yMod, zMod);
+    }
+
+    public virtual void DetachFromHand(GameObject other)
+    {
+        other.GetComponent<Rigidbody>().isKinematic = false;
+        other.transform.parent = null;
+        other.tag = "Untagged";
     }
 }

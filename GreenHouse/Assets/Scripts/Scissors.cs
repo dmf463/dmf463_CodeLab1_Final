@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UsableItem : Interactable {
+public class Scissors : UsableItem {
 
 	// Use this for initialization
 	void Start () {
-
+		
 	}
 	
 	// Update is called once per frame
@@ -14,13 +14,8 @@ public class UsableItem : Interactable {
 		
 	}
 
-    public override bool IsUsable()
+    public override void UseItem()
     {
-        return base.IsUsable();
-    }
-
-    public virtual void UseItem()
-    {
-        Debug.Log("UseItem");
+        Debug.Log("Using Scissors");
     }
 }

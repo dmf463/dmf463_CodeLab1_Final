@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
                 }
                 else if(distanceBetween < DISTANCE_THRESHOLD && rayhit.transform.GetComponent<Interactable>().IsUsable() == true)
                 {
-                    rayhit.transform.GetComponent<Interactable>().AttachToHand(rayhit.transform);
+                    rayhit.transform.GetComponent<Interactable>().AttachToHand(rayhit.collider.gameObject);
                 }
             }
             else if (isHolding == true)
@@ -50,6 +50,16 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
+            heldItem.GetComponent<UsableItem>().UseItem();
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
+            heldItem.GetComponent<UsableItem>().DetachFromHand(heldItem);
+        }
 
     }
 }
