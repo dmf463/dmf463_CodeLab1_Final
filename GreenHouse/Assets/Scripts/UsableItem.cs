@@ -5,9 +5,9 @@ using UnityEngine;
 public class UsableItem : Interactable {
 
 	// Use this for initialization
-	void Start () {
-
-	}
+	//void Start () {
+ //       base.Start();
+	//}
 	
 	// Update is called once per frame
 	void Update () {

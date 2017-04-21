@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    bool isHolding;
+    public bool isHolding;
     public float distanceBetween;
     public GameObject player;
     const float DISTANCE_THRESHOLD = 3f;
@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour {
 
         RaycastHit rayhit;
 
-        Debug.Log("is holding = " + isHolding);
+        //Debug.Log("is holding = " + isHolding);
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (isHolding == false && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayhit))
+            if (isHolding == false && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out rayhit, DISTANCE_THRESHOLD, CheckLayerMask()))
             {
                 distanceBetween = Vector3.Distance(player.transform.position, rayhit.transform.position);
                 if (distanceBetween < DISTANCE_THRESHOLD && rayhit.transform.GetComponent<Interactable>().IsUsable() == false)
@@ -45,21 +45,28 @@ public class GameManager : MonoBehaviour {
             else if (isHolding == true)
             {
                 isHolding = false;
-                Camera.main.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
-                Camera.main.transform.GetChild(1).transform.parent = null;
+                Camera.main.transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
+                Camera.main.transform.GetChild(0).transform.parent = null;
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Camera.main.transform.GetChild(0).gameObject.layer == 9)
         {
             GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
             heldItem.GetComponent<UsableItem>().UseItem();
         }
-        if (Input.GetMouseButtonDown(2))
-        {
-            GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
-            heldItem.GetComponent<UsableItem>().DetachFromHand(heldItem);
-        }
+        //if (Input.GetMouseButtonDown(2) && Camera.main.transform.childCount > 0)
+        //{
+        //    GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
+        //    heldItem.GetComponent<UsableItem>().DetachFromHand(heldItem);
+        //}
 
+    }
+
+    int CheckLayerMask()
+    {
+        int layerMask1 = 1 << 8;
+        int layerMask2 = 1 << 9;
+        return layerMask1 | layerMask2;
     }
 }

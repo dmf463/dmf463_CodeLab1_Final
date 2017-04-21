@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-    GameObject hand;
-
+    GameObject gmObj;
+    GameManager gmScript;
 
     // Use this for initialization
-    void Start () {
+    public virtual void Start () {
+
+        gmObj = GameObject.Find("GameManager");
+        gmScript = gmObj.GetComponent<GameManager>();
+        Debug.Log(gmObj);
 
     }
 	
@@ -17,10 +21,10 @@ public class Interactable : MonoBehaviour {
 		
 	}
 
-    public virtual bool IsInteractable()
-    {
-        return true;
-    }
+    //public virtual bool IsInteractable()
+    //{
+    //    return true;
+    //}
 
     public virtual bool IsUsable()
     {
@@ -29,12 +33,13 @@ public class Interactable : MonoBehaviour {
 
     public virtual void AttachToHand(GameObject other)
     {
-        hand = GameObject.FindGameObjectWithTag("hand");
+        //hand = GameObject.FindGameObjectWithTag("hand");
         //Debug.Log("the hand is called " + hand.name);
         //Debug.Log("Clicking on: " + other.gameObject.name);
         other.GetComponent<Rigidbody>().isKinematic = true;
-        other.transform.parent = hand.transform;
+        other.transform.parent = Camera.main.transform;
         other.tag = "heldItem";
+        gmScript.isHolding = true;
         //other.transform.localPosition = new Vector3(0, 0, 0);
         //other.transform.localPosition = UtilScript.CloneModVector3(other.transform.localPosition, xMod, yMod, zMod);
     }
