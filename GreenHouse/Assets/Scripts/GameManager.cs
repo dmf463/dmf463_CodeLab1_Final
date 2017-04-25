@@ -45,8 +45,10 @@ public class GameManager : MonoBehaviour {
             else if (isHolding == true)
             {
                 isHolding = false;
-                Camera.main.transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
-                Camera.main.transform.GetChild(0).transform.parent = null;
+                GameObject heldItem = Camera.main.transform.GetChild(0).gameObject;
+                heldItem.GetComponent<Interactable>().DetachFromHand(heldItem);
+                //Camera.main.transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
+                //Camera.main.transform.GetChild(0).transform.parent = null;
             }
         }
 
