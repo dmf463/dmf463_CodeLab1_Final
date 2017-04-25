@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Plants : Interactable {
-
-	// Use this for initialization
-	//void Start () {
-
- //       //base.Start();
-	//}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    //public override bool IsInteractable()
-    //{
-    //    return base.IsInteractable();
-    //}
 
     public override bool IsUsable()
     {
         return false;
+    }
+
+    public void Grow()
+    {
+        Debug.Log("Plant is Growing");
+    }
+
+    public void Cut()
+    {
+        Debug.Log("Plant is Cut!");
     }
 }

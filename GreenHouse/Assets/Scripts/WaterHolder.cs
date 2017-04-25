@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class WaterHolder : UsableItem {
 
-	// Use this for initialization
-	//void Start () {
- //       base.Start();
-	//}
-	
-	// Update is called once per frame
+    public bool usingWater = false;
+
 	void Update () {
-		
+
+        Debug.Log("usingWater = " + usingWater);
+        usingWater = false;
 	}
 
     public override void UseItem()
     {
         Debug.Log("Using WaterHolder");
+        usingWater = true;
     }
+
+    public override void OnTriggerStayX(Collider other)
+    {
+        if (other.gameObject.tag == "Plant")
+        {
+            if (usingWater == true)
+            {
+                other.SendMessage("Grow");
+            }
+        }
+    }
+
 }

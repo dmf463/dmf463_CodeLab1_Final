@@ -55,11 +55,6 @@ public class GameManager : MonoBehaviour {
             GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
             heldItem.GetComponent<UsableItem>().UseItem();
         }
-        //if (Input.GetMouseButtonDown(2) && Camera.main.transform.childCount > 0)
-        //{
-        //    GameObject heldItem = GameObject.FindGameObjectWithTag("heldItem");
-        //    heldItem.GetComponent<UsableItem>().DetachFromHand(heldItem);
-        //}
 
     }
 
