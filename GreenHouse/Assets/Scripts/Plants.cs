@@ -22,6 +22,7 @@ public class Plants : Interactable {
         Debug.Log("Plant is Growing");
         plant = transform.GetChild(0).gameObject;
         plant.transform.position += new Vector3(0, 0.1f, 0);
+        plant.transform.localScale += new Vector3(0, 0.15f, 0);
     }
 
     public void Cut()
@@ -29,5 +30,6 @@ public class Plants : Interactable {
         Debug.Log("Plant is Cut!");
         plant = transform.GetChild(0).gameObject;
         plant.transform.position -= new Vector3(0, 0.1f, 0);
+        plant.transform.localScale -= new Vector3(0, 0.15f, 0);
     }
 }
