@@ -22,8 +22,13 @@ public class Plants : Interactable {
         plant.transform.localScale += new Vector3(0, 0.15f, 0);
         AudioSource audio = plant.AddComponent<AudioSource>();
         audio.clip = Resources.Load("Sounds/LowNote") as AudioClip;
-        audio.pitch = Mathf.Pow(2, (note + transpose) / 12.0f);
-        audio.Play();
+        audio.loop = true;
+        Debug.Log("note + transpose = to -1? or -5 " + (note + transpose));
+        if (note >= 0)
+        {
+            audio.pitch = Mathf.Pow(2, (note + transpose) / 12.0f);
+            audio.Play();
+        }
     }
 
     public virtual void Cut()

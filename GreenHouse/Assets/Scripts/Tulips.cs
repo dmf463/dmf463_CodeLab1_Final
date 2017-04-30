@@ -12,7 +12,7 @@ public class Tulips : Plants {
 
     public override void Grow()
     {
-        base.note = 0;
+        note = 0;
         Debug.Log("Growing Tulips");
         base.Grow();
     }
