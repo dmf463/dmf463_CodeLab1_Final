@@ -6,7 +6,10 @@ public class Tulips : Plants {
 
     public override void Start()
     {
-        note = 0;
+        //note = 0;
+        gmObj = GameObject.Find("GameManager");
+        gmScript = gmObj.GetComponent<GameManager>();
+        audioClip = gmScript.sounds["hornNote"];
     }
 
     public override bool IsUsable()

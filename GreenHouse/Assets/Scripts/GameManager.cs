@@ -8,16 +8,26 @@ public class GameManager : MonoBehaviour {
     public float distanceBetween;
     public GameObject player;
     const float DISTANCE_THRESHOLD = 3f;
+    public Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
-	// Use this for initialization
-	void Start () {
+    public AudioClip hornNote;
+    public AudioClip valtari;
+
+    // Use this for initialization
+    void Start () {
 
         isHolding = false;
+        sounds.Add("hornNote", hornNote);
+        sounds.Add("valtari", valtari);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
+        foreach (string key in sounds.Keys)
+        {
+            //Debug.Log("key: " + key + " value: " + sounds[key]);
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
 

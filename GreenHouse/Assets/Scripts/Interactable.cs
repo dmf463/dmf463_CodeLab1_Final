@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-    GameObject gmObj;
-    GameManager gmScript;
+    protected GameObject gmObj;
+    protected GameManager gmScript;
 
     // Use this for initialization
     public virtual void Start () {
@@ -13,7 +13,6 @@ public class Interactable : MonoBehaviour {
         gmObj = GameObject.Find("GameManager");
         gmScript = gmObj.GetComponent<GameManager>();
         Debug.Log(gmObj);
-
     }
 	
 	// Update is called once per frame

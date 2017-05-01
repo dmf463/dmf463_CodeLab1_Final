@@ -9,6 +9,7 @@ public class Plants : Interactable {
     protected float note = 0;
     protected bool hasAudio = false;
     //protected AudioClip clip;
+    protected AudioClip audioClip;
 
     public override bool IsUsable()
     {
@@ -24,17 +25,17 @@ public class Plants : Interactable {
         if(hasAudio == false)
         {
             AudioSource audio = plant.AddComponent<AudioSource>();
-            audio.clip = Resources.Load("Sounds/LowNote") as AudioClip;
+            audio.clip = this.audioClip;
             audio.loop = true;
-            Debug.Log("note + transpose = to -1? or -5 " + (note + transpose));
-            if (this.note >= 0)
-            {
+            //Debug.Log("note + transpose = to -1? or -5 " + (note + transpose));
+            //if (this.note >= 0)
+            //{
                 Debug.Log("Playing Plant Note");
-                audio.pitch = Mathf.Pow(2, (note + transpose) / 12.0f);
+                //audio.pitch = Mathf.Pow(2, (note + transpose) / 12.0f);
                 audio.Play();
                 audio.spatialBlend = 1;
                 audio.volume = .1f;
-            }
+            //}
             hasAudio = true;
         }
         else

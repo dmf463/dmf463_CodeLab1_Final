@@ -6,7 +6,10 @@ public class Sunflowers : Plants {
 
     public override void Start()
     {
-        note = 8;
+        //note = 8;
+        gmObj = GameObject.Find("GameManager");
+        gmScript = gmObj.GetComponent<GameManager>();
+        audioClip = gmScript.sounds["valtari"];
     }
 
     public override bool IsUsable()

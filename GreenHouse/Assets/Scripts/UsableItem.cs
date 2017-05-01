@@ -5,9 +5,9 @@ using UnityEngine;
 public class UsableItem : Interactable {
 
 
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
     public void OnTriggerStay(Collider other)
     {

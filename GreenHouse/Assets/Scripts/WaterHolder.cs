@@ -7,11 +7,11 @@ public class WaterHolder : UsableItem {
     public bool usingWater = false;
     float note;
 
-	void Update () {
+	//void Update () {
 
-        Debug.Log("usingWater = " + usingWater);
-        usingWater = false;
-	}
+ //       Debug.Log("usingWater = " + usingWater);
+ //       usingWater = false;
+	//}
 
     public override void UseItem()
     {
@@ -25,7 +25,9 @@ public class WaterHolder : UsableItem {
         {
             if (usingWater == true)
             {
+                Debug.Log("Sending Grow");
                 other.SendMessage("Grow");
+                usingWater = false;
             }
         }
     }

@@ -7,11 +7,11 @@ public class Scissors : UsableItem {
     public bool usingScissors = false;
 
     // Update is called once per frame
-    void Update () {
+    //void Update () {
 
-        usingScissors = false;
+    //    usingScissors = false;
 
-    }
+    //}
 
     public override void UseItem()
     {
@@ -25,7 +25,10 @@ public class Scissors : UsableItem {
         {
             if (usingScissors == true)
             {
+                Debug.Log("SendingCut");
                 other.SendMessage("Cut");
+                Debug.Log("SentCute");
+                usingScissors = false;
             }
         }
     }
