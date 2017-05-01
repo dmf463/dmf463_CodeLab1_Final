@@ -18,6 +18,8 @@ public class Interactable : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
+
+        this.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
 		
 	}
 

@@ -32,6 +32,7 @@ public class Plants : Interactable {
                 Debug.Log("Playing Plant Note");
                 audio.pitch = Mathf.Pow(2, (note + transpose) / 12.0f);
                 audio.Play();
+                audio.spatialBlend = 1;
                 audio.volume = .1f;
             }
             hasAudio = true;
