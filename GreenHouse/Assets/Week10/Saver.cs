@@ -6,15 +6,15 @@ public class Saver : MonoBehaviour {
 
 	void Start ()
     {
-        // Declare a new AsteroidManager.
-        AsteroidManager am = new AsteroidManager();
+        // Declare a new PlantManager.
+        PlantManager pm = new PlantManager();
 
         // Go through all asteroids in the scene.
-		foreach(GameObject asteroid in GameObject.FindGameObjectsWithTag("Asteroid"))
+		foreach(GameObject plants in GameObject.FindGameObjectsWithTag("Plant"))
         {
-            am.SaveAsteroid(asteroid);
+            pm.SavePlant(plants);
         }
 
-        am.WriteArray();
+        pm.WriteArray();
 	}
 }

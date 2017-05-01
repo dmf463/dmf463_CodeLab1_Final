@@ -6,16 +6,17 @@ public class Loader : MonoBehaviour {
 
     void Start()
     {
-        AsteroidManager am = new AsteroidManager();
+        PlantManager pm = new PlantManager();
 
-        AsteroidData[] asteroidDatas = am.ReadAsteroids();
+        PlantData[] plantDatas = pm.ReadPlants();
 
         // Instantiate all asteroids from asteroidDatas.
-        foreach(AsteroidData ad in asteroidDatas)
+        foreach(PlantData pd in plantDatas)
         {
-            GameObject newAsteroid = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            newAsteroid.transform.position = ad.position;
-            newAsteroid.transform.localScale = ad.scale;
+            GameObject newPlant = Resources.Load("Prefabs/Pot") as GameObject;
+            newPlant.transform.position = pd.position;
+            newPlant.transform.localScale = pd.scale;
+            //newPlant.AddComponent<>
         }
     }
 	

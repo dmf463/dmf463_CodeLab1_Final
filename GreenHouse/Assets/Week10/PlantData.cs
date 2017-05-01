@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
 
-public class AsteroidData {
+public class PlantData {
 
 	public Vector3 position;
 	public Vector3 scale;
+    public Plants script;
 
 	private const string POS_X = "xpos";
 	private const string POS_Y = "ypos";
@@ -17,7 +18,7 @@ public class AsteroidData {
     private const string SCALE_Z = "zscale";
 
 
-    public AsteroidData(string fileName){
+    public PlantData(string fileName){
 		JSONNode jason = UtilScript.ReadJSONFromFile(Application.dataPath, fileName);
 
 		position = new Vector3(
@@ -32,7 +33,7 @@ public class AsteroidData {
     }
 
 
-    public AsteroidData(JSONClass jason)
+    public PlantData(JSONClass jason)
     {
         position = new Vector3(
             jason[POS_X].AsFloat,
@@ -46,9 +47,10 @@ public class AsteroidData {
     }
 
 
-    public AsteroidData(Vector3 position, Vector3 scale){
+    public PlantData(Vector3 position, Vector3 scale, Plants script){
 		this.position = position;
 		this.scale = scale;
+        this.script = script;
 	}
 
 
