@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plants : Interactable {
 
-    //GameObject plant;
+    GameObject plant;
     protected float transpose = -4;  // transpose in semitones
     protected float note = 0;
     //protected AudioClip clip;
@@ -17,13 +17,10 @@ public class Plants : Interactable {
     public virtual void Grow()
     {
         Debug.Log("Plant is Growing");
-        //plant = transform.GetChild(0).gameObject;
-        //plant.
-        this.transform.position += new Vector3(0, 0.1f, 0);
-        //plant.
-        this.transform.localScale += new Vector3(0, 0.15f, 0);
-        //AudioSource audio = plant.AddComponent<AudioSource>();
-        AudioSource audio = this.gameObject.AddComponent<AudioSource>();
+        plant = transform.GetChild(0).gameObject;
+        plant.transform.position += new Vector3(0, 0.1f, 0);
+        plant.transform.localScale += new Vector3(0, 0.15f, 0);
+        AudioSource audio = plant.AddComponent<AudioSource>();
         audio.clip = Resources.Load("Sounds/LowNote") as AudioClip;
         audio.loop = true;
         Debug.Log("note + transpose = to -1? or -5 " + (note + transpose));

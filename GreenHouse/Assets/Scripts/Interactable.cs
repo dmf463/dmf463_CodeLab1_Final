@@ -48,6 +48,14 @@ public class Interactable : MonoBehaviour {
     {
         other.GetComponent<Rigidbody>().isKinematic = false;
         other.transform.parent = null;
-        other.tag = "Untagged";
+        if (other.tag == "Plant")
+        {
+            other.tag = "Plant";
+            other.transform.parent = GameObject.Find("Pots").transform;
+        }
+        else
+        {
+            other.tag = "Untagged";
+        }
     }
 }
