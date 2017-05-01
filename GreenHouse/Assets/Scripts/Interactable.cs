@@ -41,6 +41,7 @@ public class Interactable : MonoBehaviour {
         other.transform.parent = Camera.main.transform;
         other.tag = "heldItem";
         gmScript.isHolding = true;
+        //other.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         //other.transform.localPosition = new Vector3(0, 0, 0);
         //other.transform.localPosition = UtilScript.CloneModVector3(other.transform.localPosition, xMod, yMod, zMod);
     }
