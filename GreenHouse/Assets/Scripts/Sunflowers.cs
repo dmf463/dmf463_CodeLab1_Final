@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Sunflowers : Plants {
 
+    public override void Start()
+    {
+        note = 8;
+    }
+
     public override bool IsUsable()
     {
         return false;
@@ -11,9 +16,10 @@ public class Sunflowers : Plants {
 
     public override void Grow()
     {
-        base.note = 8;
-        Debug.Log("Growing Tulips");
+        Debug.Log("Growing Sunflowers");
         base.Grow();
+        Debug.Log(name + "note is " + note);
+        Debug.Log(name + "tranpose is " + transpose);
     }
 
 }

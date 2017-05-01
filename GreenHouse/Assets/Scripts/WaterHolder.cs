@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterHolder : UsableItem {
 
     public bool usingWater = false;
+    float note;
 
 	void Update () {
 
