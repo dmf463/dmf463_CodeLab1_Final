@@ -17,7 +17,8 @@ public class PlantManager {
 	public void SavePlant(GameObject plant)
     {
         // 1: Create plant data for this plant.
-        PlantData pd = new PlantData(plant.transform.position, plant.transform.localScale, plant.GetComponent<Plants>());
+        //Debug.Log(plant.gameObject.name);
+        PlantData pd = new PlantData(plant.transform.position, plant.transform.localScale, plant.gameObject.name);
 
         // 2: Add plant data to plantArray as JSONClass
         plantArray.Add(pd.ToJSON());

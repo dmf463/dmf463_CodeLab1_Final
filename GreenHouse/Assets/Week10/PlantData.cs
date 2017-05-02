@@ -7,7 +7,7 @@ public class PlantData {
 
 	public Vector3 position;
 	public Vector3 scale;
-    public Plants script;
+    public string name;
 
 	private const string POS_X = "xpos";
 	private const string POS_Y = "ypos";
@@ -30,6 +30,8 @@ public class PlantData {
             jason[SCALE_X].AsFloat,
             jason[SCALE_Y].AsFloat,
             jason[SCALE_Z].AsFloat);
+
+        name = jason[name];
     }
 
 
@@ -44,13 +46,15 @@ public class PlantData {
             jason[SCALE_X].AsFloat,
             jason[SCALE_Y].AsFloat,
             jason[SCALE_Z].AsFloat);
+
+        name = jason[name];
     }
 
 
-    public PlantData(Vector3 position, Vector3 scale, Plants script){
+    public PlantData(Vector3 position, Vector3 scale, string name){
 		this.position = position;
 		this.scale = scale;
-        this.script = script;
+        this.name = name;
 	}
 
 
@@ -64,6 +68,8 @@ public class PlantData {
         json[SCALE_X].AsFloat = scale.x;
         json[SCALE_Y].AsFloat = scale.y;
         json[SCALE_Z].AsFloat = scale.z;
+
+        json[name] = name;
 
         return json;
 	}
