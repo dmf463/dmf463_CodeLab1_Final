@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Roses : Plants {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void Start()
+    {
+        //note = 0;
+        gmObj = GameObject.Find("GameManager");
+        gmScript = gmObj.GetComponent<GameManager>();
+        audioClip = gmScript.sounds["organ3"];
+    }
+
+    public override bool IsUsable()
+    {
+        return false;
+    }
+
+    public override void Grow()
+    {
+        //note = 0;
+        Debug.Log("Growing Roses");
+        base.Grow();
+    }
+
 }

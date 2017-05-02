@@ -10,15 +10,34 @@ public class GameManager : MonoBehaviour {
     const float DISTANCE_THRESHOLD = 3f;
     public Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
-    public AudioClip hornNote;
-    public AudioClip valtari;
+    public AudioClip arpeg1;
+    public AudioClip arpeg2;
+    public AudioClip arpeg3;
+    public AudioClip organC;
+    public AudioClip organC2;
+    public AudioClip organC3;
+    public AudioClip organCM;
+    public AudioClip spaceHook;
+    public AudioClip stringC2;
+    public AudioClip stringC3;
+    public AudioClip vibeBass;
+
 
     // Use this for initialization
     void Start () {
 
         isHolding = false;
-        sounds.Add("hornNote", hornNote);
-        sounds.Add("valtari", valtari);
+        sounds.Add("arpeg1", arpeg1);
+        sounds.Add("arpeg2", arpeg2);
+        sounds.Add("arpeg3", arpeg3);
+        sounds.Add("organC", organC);
+        sounds.Add("ogranC2", organC2);
+        sounds.Add("organC3", organC3);
+        sounds.Add("organCM", organCM);
+        sounds.Add("spaceHook", spaceHook);
+        sounds.Add("stringC2", stringC2);
+        sounds.Add("stringC3", stringC3);
+        sounds.Add("vibeBass", vibeBass);
 
     }
 	
