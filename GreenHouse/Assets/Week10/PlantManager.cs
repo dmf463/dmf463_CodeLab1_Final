@@ -21,6 +21,7 @@ public class PlantManager {
 
         // 2: Add plant data to plantArray as JSONClass
         plantArray.Add(pd.ToJSON());
+        Debug.Log(plantArray);
     }
 
 

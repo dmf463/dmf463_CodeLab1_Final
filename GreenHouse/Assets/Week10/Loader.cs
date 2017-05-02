@@ -13,10 +13,9 @@ public class Loader : MonoBehaviour {
         // Instantiate all asteroids from asteroidDatas.
         foreach(PlantData pd in plantDatas)
         {
-            GameObject newPlant = Resources.Load("Prefabs/Pot") as GameObject;
+            GameObject newPlant = Instantiate(Resources.Load("Prefabs/Pot")) as GameObject;
             newPlant.transform.position = pd.position;
             newPlant.transform.localScale = pd.scale;
-            //newPlant.AddComponent<>
         }
     }
 	
