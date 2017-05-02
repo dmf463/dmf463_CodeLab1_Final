@@ -9,7 +9,7 @@ public class Roses : Plants {
         //note = 0;
         gmObj = GameObject.Find("GameManager");
         gmScript = gmObj.GetComponent<GameManager>();
-        audioClip = gmScript.sounds["organ3"];
+        audioClip = gmScript.sounds["organC3"];
     }
 
     public override bool IsUsable()

@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
         sounds.Add("arpeg2", arpeg2);
         sounds.Add("arpeg3", arpeg3);
         sounds.Add("organC", organC);
-        sounds.Add("ogranC2", organC2);
+        sounds.Add("organC2", organC2);
         sounds.Add("organC3", organC3);
         sounds.Add("organCM", organCM);
         sounds.Add("spaceHook", spaceHook);
