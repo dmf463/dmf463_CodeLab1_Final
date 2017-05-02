@@ -17,6 +17,8 @@ public class PlantData {
     private const string SCALE_Y = "yscale";
     private const string SCALE_Z = "zscale";
 
+    private const string NAME = "name";
+
 
     public PlantData(string fileName){
 		JSONNode jason = UtilScript.ReadJSONFromFile(Application.dataPath, fileName);
@@ -31,7 +33,7 @@ public class PlantData {
             jason[SCALE_Y].AsFloat,
             jason[SCALE_Z].AsFloat);
 
-        name = jason[name];
+        name = jason[NAME];
     }
 
 
@@ -47,7 +49,7 @@ public class PlantData {
             jason[SCALE_Y].AsFloat,
             jason[SCALE_Z].AsFloat);
 
-        name = jason[name];
+        name = jason[NAME];
     }
 
 
@@ -69,7 +71,7 @@ public class PlantData {
         json[SCALE_Y].AsFloat = scale.y;
         json[SCALE_Z].AsFloat = scale.z;
 
-        json[name] = name;
+        json[NAME] = name;
 
         return json;
 	}

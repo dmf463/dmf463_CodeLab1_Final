@@ -16,6 +16,7 @@ public class Loader : MonoBehaviour {
             GameObject newPlant = Instantiate(Resources.Load("Prefabs/Pot")) as GameObject;
             newPlant.transform.position = pd.position;
             newPlant.transform.localScale = pd.scale;
+            newPlant.gameObject.name = pd.name;
         }
     }
 	
