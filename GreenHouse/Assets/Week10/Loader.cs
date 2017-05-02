@@ -17,6 +17,44 @@ public class Loader : MonoBehaviour {
             newPlant.transform.position = pd.position;
             newPlant.transform.localScale = pd.scale;
             newPlant.gameObject.name = pd.name;
+            switch (pd.name)
+            {
+                case "Tulips":
+                    newPlant.AddComponent<Tulips>();
+                    break;
+                case "Sunflowers":
+                    newPlant.AddComponent<Sunflowers>();
+                    break;
+                case "Gardenias":
+                    newPlant.AddComponent<Gardenias>();
+                    break;
+                case "Orchid":
+                    newPlant.AddComponent<Orchid>();
+                    break;
+                case "Lily":
+                    newPlant.AddComponent<Lily>();
+                    break;
+                case "PalmTree":
+                    newPlant.AddComponent<PalmTree>();
+                    break;
+                case "OakTree":
+                    newPlant.AddComponent<OakTree>();
+                    break;
+                case "Corn":
+                    newPlant.AddComponent<Corn>();
+                    break;
+                case "Octopus":
+                    newPlant.AddComponent<Octopus>();
+                    break;
+                case "Arm":
+                    newPlant.AddComponent<Arm>();
+                    break;
+                case "Roses":
+                    newPlant.AddComponent<Roses>();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 	
