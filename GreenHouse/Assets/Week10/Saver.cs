@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Saver : MonoBehaviour {
 
-	void Start ()
+	public void Save ()
     {
         // Declare a new PlantManager.
         PlantManager pm = new PlantManager();

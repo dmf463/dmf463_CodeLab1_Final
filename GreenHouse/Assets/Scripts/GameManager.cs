@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -22,6 +23,18 @@ public class GameManager : MonoBehaviour {
     public AudioClip stringC3;
     public AudioClip vibeBass;
 
+    string stringToEdit = "Write Name Here Click Space To SAVE and 'L' to LOAD";
+    public bool readyToWrite = false;
+    public bool readyToLoad = false;
+
+    PlantManager pm = new PlantManager();
+    GameObject saverObj;
+    Saver saveScript;
+
+    GameObject fileHolder;
+    SaveToFile fileHolderScript;
+    
+
 
     // Use this for initialization
     void Start () {
@@ -38,17 +51,43 @@ public class GameManager : MonoBehaviour {
         sounds.Add("stringC2", stringC2);
         sounds.Add("stringC3", stringC3);
         sounds.Add("vibeBass", vibeBass);
+        fileHolder = GameObject.Find("SaveFileName");
+        fileHolderScript = fileHolder.GetComponent<SaveToFile>();
 
+        if (this.gameObject.scene.name == "TitleScreen")
+        {
+            saverObj = null;
+            saveScript = null;
+        }
+        else
+        {
+            saverObj = GameObject.Find("Saver");
+            saveScript = saverObj.GetComponent<Saver>();
+            Debug.Log(pm.SaveFileName + " is where I'm saving");
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
+
         foreach (string key in sounds.Keys)
         {
             //Debug.Log("key: " + key + " value: " + sounds[key]);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
+        if(this.gameObject.scene.name == "TitleScreen")
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                saveScript.Save();
+            }
+        }
+
 
         RaycastHit rayhit;
 
@@ -94,5 +133,44 @@ public class GameManager : MonoBehaviour {
         int layerMask1 = 1 << 8;
         int layerMask2 = 1 << 9;
         return layerMask1 | layerMask2;
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene("itemRoom");
+    }
+
+    public void EnterName()
+    {
+        readyToWrite = true;
+    }
+
+    public void LoadName()
+    {
+        readyToLoad = true;
+    }
+
+    public void OnGUI()
+    {
+        if(readyToWrite == true)
+        {
+            stringToEdit = GUI.TextField(new Rect(500, 250, 200, 50), stringToEdit, 25);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                fileHolderScript.SaveFileName = stringToEdit + ".txt";
+                Debug.Log(stringToEdit + "is where I'm saving");
+                Debug.Log("Confirmed Name");
+                ChangeScene();
+            }
+        }
+        if(readyToLoad == true)
+        {
+            stringToEdit = GUI.TextField(new Rect(500, 500, 200, 50), stringToEdit, 25);
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                fileHolderScript.SaveFileName = stringToEdit + ".txt";
+                ChangeScene();
+            }
+        }
     }
 }

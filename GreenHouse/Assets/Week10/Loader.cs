@@ -6,12 +6,26 @@ public class Loader : MonoBehaviour {
 
     void Start()
     {
+
         PlantManager pm = new PlantManager();
 
         PlantData[] plantDatas = pm.ReadPlants();
 
+        if(pm.SaveFileName == null)
+        {
+            return;
+        }
+        else
+        {
+            GameObject[] planstToKill = GameObject.FindGameObjectsWithTag("Plant");
+            for (int i = 0; i < planstToKill.Length; i++)
+            {
+                Destroy(planstToKill[i]);
+            }
+        }
+
         // Instantiate all asteroids from asteroidDatas.
-        foreach(PlantData pd in plantDatas)
+        foreach (PlantData pd in plantDatas)
         {
             GameObject newPlant = Instantiate(Resources.Load("Prefabs/Pot")) as GameObject;
             newPlant.transform.position = pd.position;

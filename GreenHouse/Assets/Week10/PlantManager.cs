@@ -6,6 +6,7 @@ using SimpleJSON;
 public class PlantManager {
 
     JSONArray plantArray;
+    public string SaveFileName;
 
 
     public PlantManager()
@@ -28,14 +29,17 @@ public class PlantManager {
 
     public void WriteArray()
     {
-        UtilScript.WriteJSONtoFile(Application.dataPath, "SavedPlants.txt", plantArray);
+        SaveFileName = GameObject.Find("SaveFileName").GetComponent<SaveToFile>().SaveFileName;
+        UtilScript.WriteJSONtoFile(Application.dataPath, SaveFileName, plantArray);
     }
 
 
     public PlantData[] ReadPlants()
     {
         // Read array from file.
-        plantArray = UtilScript.ReadJSONFromFile(Application.dataPath, "SavedPlants.txt") as JSONArray;
+
+        SaveFileName = GameObject.Find("SaveFileName").GetComponent<SaveToFile>().SaveFileName;
+        plantArray = UtilScript.ReadJSONFromFile(Application.dataPath, SaveFileName) as JSONArray;
 
         PlantData[] plantDatas = new PlantData[plantArray.Count];
 
